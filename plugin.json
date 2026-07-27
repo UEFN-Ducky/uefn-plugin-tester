@@ -1,0 +1,71 @@
+{
+  "id": "tester",
+  "kind": "plugin",
+  "version": "1.0.11",
+  "label": "UEFN Testing",
+  "description": "Device-graph simulation, Verse harness tests, session probes \u2014 MCP tools plus the Tester dock. Bundles the tester skill.",
+  "min_app_version": "1.0.0",
+  "default_enabled": true,
+  "secret_keys": [],
+  "contributes": {
+    "agent.tools": {
+      "category": "tester",
+      "tools": [
+        "device_graph_snapshot",
+        "simulate_device_event",
+        "device_graph_audit",
+        "verse_test_scaffold",
+        "verse_test_run",
+        "verse_test_results",
+        "session_status",
+        "actor_state_snapshot",
+        "actor_state_diff",
+        "tester_list_devices",
+        "tester_list_tests",
+        "tester_create_simulation",
+        "tester_run_simulation",
+        "verse_test_add_case",
+        "tester_get_results"
+      ],
+      "intent_pattern": "\\b(test|tester|simulate|device\\s*graph|harness|session\\s*probe)\\b",
+      "plan_tools": [
+        "device_graph_snapshot",
+        "device_graph_audit",
+        "verse_test_results",
+        "session_status",
+        "actor_state_snapshot",
+        "actor_state_diff",
+        "tester_list_devices",
+        "tester_list_tests",
+        "tester_get_results"
+      ]
+    },
+    "dock.panels": [
+      {
+        "id": "tester",
+        "title": "UEFN Testing",
+        "defaultSide": "right",
+        "ui": "builtin:tester-dock"
+      }
+    ],
+    "walkthrough": {
+      "id": "tester",
+      "title": "Tester tools ready",
+      "auto_start": "first_enable",
+      "settings_tab": "Store",
+      "steps": [
+        {
+          "target": "settings.store.root",
+          "title": "Tester tools ready",
+          "body": "Testing MCP tools are live. Ask to simulate device graphs, run Verse harness asserts, or probe the session.",
+          "advance": "next",
+          "mode": "rect"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "entry": "backend",
+    "register": "register"
+  }
+}
