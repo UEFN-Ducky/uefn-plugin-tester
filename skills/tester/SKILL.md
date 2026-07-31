@@ -6,8 +6,8 @@ license: All Rights Reserved
 metadata:
   label: UEFN Testing
   version: 3
-  author: Iliya Kovachki
-  copyright: Copyright 2026 Iliya Kovachki
+  author: UEFN-Ducky
+  copyright: Copyright 2026 UEFN-Ducky
   allow_redistribute: false
 ---
 
