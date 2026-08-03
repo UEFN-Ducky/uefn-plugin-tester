@@ -2,16 +2,21 @@
 source_plugin_id: tester
 name: tester
 description: "UEFN testing suite — device-graph simulation, Verse harness asserts, session probes"
-license: All Rights Reserved
+license: Ducky Source-Available License v1.0
 metadata:
   label: UEFN Testing
-  version: 3
+  version: 4
   author: UEFN-Ducky
   copyright: Copyright 2026 UEFN-Ducky
   allow_redistribute: false
 ---
 
 # Tester — verify before play
+
+**CRITICAL — never parallel place/wire:** Tester audits and simulates. Fixing
+unwired refs uses uefn tools **one call per turn** — never same-turn multi
+`wire_verse_*` / `spawn_actor` / `save_current_level`. Leave place/wire recipes
+to `skill_read_subskill("uefn", "batch_commands")` / `creative_devices`.
 
 **Spawn template:** Settings → Duckies → **Tester** (or `ducky_spawn_chat` / New Ducky → Tester). That profile ships with packs `tester` + `uefn` + `verse` + `islandsettings` + `ponytail`, both `builtin_uefn` + `builtin_ducky` MCP groups, and the full testing tool surface always unlocked.
 
