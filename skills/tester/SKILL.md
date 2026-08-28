@@ -2,16 +2,18 @@
 source_plugin_id: tester
 name: tester
 description: "UEFN testing suite — device-graph simulation, Verse harness asserts, session probes"
-license: Ducky Source-Available License v1.0
+license: MIT
 metadata:
   label: UEFN Testing
-  version: 4
+  version: 5
   author: UEFN-Ducky
-  copyright: Copyright 2026 UEFN-Ducky
-  allow_redistribute: false
+  copyright: Copyright 2026 Mindful Path Company, LLC
+  allow_redistribute: true
 ---
 
 # Tester — verify before play
+
+**Epic UEFN MCP:** Settings → MCPs → **UEFN MCP (Epic)** (`unreal-mcp`). Bridge tools: `unreal__list_toolsets` → `unreal__describe_toolset` → `unreal__call_tool` (toolsets — not flat `unreal__create_entity`). Map: `skill_read_subskill("uefn", "epic_mcp")`. Ducky tools below stay for this skill's domain when Epic does not cover it.
 
 **CRITICAL — never parallel place/wire:** Tester audits and simulates. Fixing
 unwired refs uses uefn tools **one call per turn** — never same-turn multi
