@@ -1,7 +1,7 @@
 {
   "id": "tester",
   "kind": "plugin",
-  "version": "1.0.15",
+  "version": "1.0.17",
   "label": "UEFN Testing",
   "description": "Device-graph simulation, Verse harness tests, session probes \u2014 MCP tools plus the Tester dock. Bundles the tester skill. Serial editor ops (one MCP call per turn).",
   "min_app_version": "1.0.0",
