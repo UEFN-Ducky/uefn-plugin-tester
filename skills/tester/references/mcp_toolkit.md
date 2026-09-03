@@ -18,7 +18,7 @@ You have these tools **every turn** on the Tester profile (not keyword-gated).
 | `tester_list_devices` | Device outliner (live + Verse sources) + audit summary |
 | `device_graph_snapshot` | Nodes + wiring edges JSON |
 | `device_graph_audit` | Unwired refs, orphans, cycles, missing spawn pads |
-| `find_devices` / `inspect_verse_device` / `inspect_creative_device` | Deep-dive one device |
+| `get_all_actors(label_filter=…)` / `inspect_verse_device` / Epic `GetDeviceProperties` | Deep-dive one device |
 
 ## Offline simulation (create + run)
 
@@ -47,7 +47,7 @@ Effect kinds: `grant_item`, `teleport`, `score`, `movement`, `hud`, `cinematic`,
 | Tool | Use |
 |------|-----|
 | `session_status` | Is play/PIE active? |
-| `play_in_editor` / `stop_pie` | Start/stop session |
+| Epic `ValkyrieToolset.SessionToolset` `StartGame` / `StopGame` | Start/stop session |
 | `get_editor_log` | Stream/filter log (`since_offset`, `regex`) |
 | `actor_state_snapshot` / `actor_state_diff` | Movement/teleport before/after |
 

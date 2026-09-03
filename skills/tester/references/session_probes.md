@@ -14,7 +14,7 @@ Use only after offline sim + harness cannot answer the question.
 ## Tools
 
 - `session_status` — is a play/PIE session active?
-- `play_in_editor` / `stop_pie` — start/stop (best-effort on UEFN builds).
+- Epic `ValkyrieToolset.SessionToolset` `StartGame` / `StopGame` — start/stop (best-effort on UEFN builds).
 - `get_editor_log(last_n, since_offset, regex)` — stream new log bytes; use `regex` for `[DUCKY-TEST]` or custom markers.
 - `actor_state_snapshot(labels|label_filter)` — capture transforms.
 - `actor_state_diff(before_json, after_json, epsilon)` — movement/teleport deltas in uu.
