@@ -5,7 +5,7 @@ description: "UEFN testing suite — device-graph simulation, Verse harness asse
 license: MIT
 metadata:
   label: UEFN Testing
-  version: 5
+  version: 7
   author: UEFN-Ducky
   copyright: Copyright 2026 Mindful Path Company, LLC
   allow_redistribute: true
@@ -13,7 +13,7 @@ metadata:
 
 # Tester — verify before play
 
-**Epic UEFN MCP:** Settings → MCPs → **UEFN MCP (Epic)** (`unreal-mcp`). Bridge tools: `unreal__list_toolsets` → `unreal__describe_toolset` → `unreal__call_tool` (toolsets — not flat `unreal__create_entity`). Map: `skill_read_subskill("uefn", "epic_mcp")`. Ducky tools below stay for this skill's domain when Epic does not cover it.
+**Tool order (HARD):** 1) Official UEFN MCP first — `ducky_get_status`; when `epic_mcp_online` use nested `unreal__*` (`unreal__list_toolsets` → `unreal__describe_toolset` → `unreal__call_tool`; 5+ ops → ProgrammaticToolset `execute_tool_script`). 2) Ducky listener second (Epic-offline gaps + Ducky-only tools listed in this skill). 3) `execute_python` LAST — never a placement/layout path, even if Epic and listener already failed. Never spawn, move, or assign materials. Map: `skill_read_subskill("uefn", "epic_mcp")`.
 
 **CRITICAL — never parallel place/wire:** Tester audits and simulates. Fixing
 unwired refs uses uefn tools **one call per turn** — never same-turn multi
@@ -30,8 +30,8 @@ Load `mcp_toolkit` for the full tool cheat sheet (`skill_read_subskill("tester",
 
 ## STOP ladder
 
-- Listener offline → still run workspace Verse discovery + write harness files; do not wait for the listener for file work.
-- `device_graph_snapshot` fails → check listener / reload once; continue with `tester_list_devices` workspace nodes.
+- UEFN offline (no UEFN MCP and no listener) → still run workspace Verse discovery + write harness files; do not wait for a connection for file work.
+- `device_graph_snapshot` fails → retry once via listener if Epic was first; then continue with `tester_list_devices` workspace nodes. Never treat a slow snapshot as offline when `ducky_get_status` shows UEFN MCP or the listener connected.
 - Harness compile fails → `workspace_list_verse_errors` and fix every reported line; never paste placeholders.
 
 ## Golden path

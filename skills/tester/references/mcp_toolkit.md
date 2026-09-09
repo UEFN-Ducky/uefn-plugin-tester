@@ -15,7 +15,7 @@ You have these tools **every turn** on the Tester profile (not keyword-gated).
 
 | Tool | Use |
 |------|-----|
-| `tester_list_devices` | Device outliner (live + Verse sources) + audit summary |
+| `tester_list_devices` | Device outliner. Live graph via UEFN MCP first, listener second, Verse sources last. `uefn_online` is Connections health, not snapshot success. |
 | `device_graph_snapshot` | Nodes + wiring edges JSON |
 | `device_graph_audit` | Unwired refs, orphans, cycles, missing spawn pads |
 | `get_all_actors(label_filter=…)` / `inspect_verse_device` / Epic `GetDeviceProperties` | Deep-dive one device |

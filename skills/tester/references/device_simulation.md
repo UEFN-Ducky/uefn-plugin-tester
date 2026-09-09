@@ -31,4 +31,4 @@ If a step is `skipped`, the target semantics do not receive that signal — fix 
 
 ## Tester panel
 
-Right-rail **Tester** tab lists devices (live when listener online, Verse sources offline). **Sim** on a row runs `simulate_device_event` and shows the trace inline.
+Right-rail **Tester** tab lists devices (live via UEFN MCP first, listener second, Verse sources last). Status is UEFN connected/offline from the same cheap probes as Connections — never snapshot success. **Sim** on a row runs `simulate_device_event` and shows the trace inline.
