@@ -5,7 +5,7 @@ description: "UEFN testing suite — device-graph simulation, Verse harness asse
 license: MIT
 metadata:
   label: UEFN Testing
-  version: 7
+  version: 8
   author: UEFN-Ducky
   copyright: Copyright 2026 Mindful Path Company, LLC
   allow_redistribute: true
@@ -31,7 +31,8 @@ Load `mcp_toolkit` for the full tool cheat sheet (`skill_read_subskill("tester",
 ## STOP ladder
 
 - UEFN offline (no UEFN MCP and no listener) → still run workspace Verse discovery + write harness files; do not wait for a connection for file work.
-- `device_graph_snapshot` fails → retry once via listener if Epic was first; then continue with `tester_list_devices` workspace nodes. Never treat a slow snapshot as offline when `ducky_get_status` shows UEFN MCP or the listener connected.
+- No live graph (`tester_list_devices.live` is null / `device_graph_snapshot` errors) → **do not call it again** and do not `reload_listener`. The tool already tried UEFN MCP then the listener with full busy-wait. Continue with the `workspace` nodes it returned. `uefn_online` / `listener_online` in that payload is the health verdict — a slow or empty snapshot is not "offline".
+- `session_status` / `get_editor_log` / `actor_state_*` need the listener. Skip them when `listener_online` is false; report from sim + harness instead.
 - Harness compile fails → `workspace_list_verse_errors` and fix every reported line; never paste placeholders.
 
 ## Golden path

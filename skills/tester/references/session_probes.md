@@ -11,6 +11,10 @@ metadata:
 
 Use only after offline sim + harness cannot answer the question.
 
+**Gate:** every probe here hits the UEFN listener. Check `listener_online` from
+`tester_list_devices` (or `ducky_get_status`) first. False → skip probes, report
+from sim + harness. Never retry a probe or `reload_listener` to make it work.
+
 ## Tools
 
 - `session_status` — is a play/PIE session active?

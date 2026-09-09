@@ -15,8 +15,8 @@ You have these tools **every turn** on the Tester profile (not keyword-gated).
 
 | Tool | Use |
 |------|-----|
-| `tester_list_devices` | Device outliner. Live graph via UEFN MCP first, listener second, Verse sources last. `uefn_online` is Connections health, not snapshot success. |
-| `device_graph_snapshot` | Nodes + wiring edges JSON |
+| `tester_list_devices` | Device outliner — one call returns `live` graph, `workspace` nodes, `audit`, `uefn_online`, `listener_online`, `error`. UEFN MCP first, listener second, Verse sources last. Call once per turn; if `live` is null do not re-call or `reload_listener`. |
+| `device_graph_snapshot` | Raw nodes + edges JSON (same ladder inside). Use `tester_list_devices` unless you need the bare snapshot. |
 | `device_graph_audit` | Unwired refs, orphans, cycles, missing spawn pads |
 | `get_all_actors(label_filter=…)` / `inspect_verse_device` / Epic `GetDeviceProperties` | Deep-dive one device |
 
@@ -42,7 +42,7 @@ Effect kinds: `grant_item`, `teleport`, `score`, `movement`, `hud`, `cinematic`,
 | `verse_test_run` | Compile + push (+ optional session) |
 | `tester_get_results` / `verse_test_results` | Parse `[DUCKY-TEST]` PASS/FAIL |
 
-## Session probes (last resort)
+## Session probes (last resort — listener required; skip when `listener_online` is false)
 
 | Tool | Use |
 |------|-----|
