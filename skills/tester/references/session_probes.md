@@ -23,6 +23,10 @@ from sim + harness. Never retry a probe or `reload_listener` to make it work.
 - `actor_state_snapshot(labels|label_filter)` — capture transforms.
 - `actor_state_diff(before_json, after_json, epsilon)` — movement/teleport deltas in uu.
 
+Snapshot/diff may *see* scale on a Fortnite Creative device. Do not "fix" that
+by writing actor scale — it breaks buttons/triggers/volumes. Resize via Details
+`SetDeviceProperty` (Width/Height/zone) only.
+
 ## Pattern for movement checks
 
 1. `before = actor_state_snapshot(labels=["PlayerStart", …])`

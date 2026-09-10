@@ -5,7 +5,7 @@ description: "UEFN testing suite — device-graph simulation, Verse harness asse
 license: MIT
 metadata:
   label: UEFN Testing
-  version: 8
+  version: 9
   author: UEFN-Ducky
   copyright: Copyright 2026 Mindful Path Company, LLC
   allow_redistribute: true
