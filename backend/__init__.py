@@ -6,4 +6,7 @@ from __future__ import annotations
 def register(api) -> None:
     """Import gated MCP tools onto the shared FastMCP instance."""
     import backend.tools.tester.suite  # noqa: F401
+    from .automations import register_nodes
+
+    register_nodes(api)
     api.log("tester tools registered")

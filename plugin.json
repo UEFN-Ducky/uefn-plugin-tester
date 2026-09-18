@@ -1,7 +1,7 @@
 {
   "id": "tester",
   "kind": "plugin",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "label": "UEFN Testing",
   "description": "Device-graph simulation, Verse harness tests, session probes — MCP tools plus the Tester dock. Bundles the tester skill. Serial editor ops (one MCP call per turn).",
   "min_app_version": "1.0.0",
@@ -48,6 +48,52 @@
         "ui": "builtin:tester-dock"
       }
     ],
+    "automations": {
+      "nodes": [
+        {
+          "id": "uefn.game.start",
+          "label": "Start game",
+          "group": "UEFN Playtest",
+          "systems": ["pipeline"],
+          "description": "Start the island session (Epic first).",
+          "config_fields": []
+        },
+        {
+          "id": "uefn.player.wait",
+          "label": "Wait for player",
+          "group": "UEFN Playtest",
+          "systems": ["pipeline"],
+          "description": "Block until a player pawn is in the session.",
+          "config_fields": [
+            { "id": "timeout_sec", "label": "Timeout (seconds)", "type": "number" }
+          ]
+        },
+        {
+          "id": "uefn.player.teleport",
+          "label": "Teleport player",
+          "group": "UEFN Playtest",
+          "systems": ["pipeline"],
+          "description": "Move the live player to a teleporter / actor label or x,y,z.",
+          "config_fields": [
+            { "id": "teleporter", "label": "Teleporter / actor label", "type": "string" },
+            { "id": "x", "label": "X", "type": "number" },
+            { "id": "y", "label": "Y", "type": "number" },
+            { "id": "z", "label": "Z", "type": "number" }
+          ]
+        },
+        {
+          "id": "uefn.log.expect",
+          "label": "Expect log",
+          "group": "UEFN Playtest",
+          "systems": ["pipeline"],
+          "description": "Poll the editor log until a regex matches.",
+          "config_fields": [
+            { "id": "regex", "label": "Regex", "type": "string" },
+            { "id": "timeout_sec", "label": "Timeout (seconds)", "type": "number" }
+          ]
+        }
+      ]
+    },
     "walkthrough": {
       "id": "tester",
       "title": "Tester tools ready",
