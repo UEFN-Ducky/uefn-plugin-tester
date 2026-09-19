@@ -5,7 +5,7 @@ description: "UEFN testing suite — device-graph simulation, Verse harness asse
 license: MIT
 metadata:
   label: UEFN Testing
-  version: 9
+  version: 10
   author: UEFN-Ducky
   copyright: Copyright 2026 Mindful Path Company, LLC
   allow_redistribute: true
@@ -13,12 +13,10 @@ metadata:
 
 # Tester — verify before play
 
-**Tool order (HARD):** 1) Official UEFN MCP first — `ducky_get_status`; when `epic_mcp_online` use nested `unreal__*` (`unreal__list_toolsets` → `unreal__describe_toolset` → `unreal__call_tool`; 5+ ops → ProgrammaticToolset `execute_tool_script`). 2) Ducky listener second (Epic-offline gaps + Ducky-only tools listed in this skill). 3) `execute_python` LAST — never a placement/layout path, even if Epic and listener already failed. Never spawn, move, or assign materials. Map: `skill_read_subskill("uefn", "epic_mcp")`.
-
 **CRITICAL — never parallel place/wire:** Tester audits and simulates. Fixing
 unwired refs uses uefn tools **one call per turn** — never same-turn multi
 `wire_verse_*` / `spawn_actor` / `save_current_level`. Leave place/wire recipes
-to `skill_read_subskill("uefn", "batch_commands")` / `creative_devices`.
+to SERIAL: one mutating/editor call per assistant message. / `creative_devices`.
 
 **Spawn template:** Settings → Duckies → **Tester** (or `ducky_spawn_chat` / New Ducky → Tester). That profile ships with packs `tester` + `uefn` + `verse` + `islandsettings` + `ponytail`, both `builtin_uefn` + `builtin_ducky` MCP groups, and the full testing tool surface always unlocked.
 
@@ -64,3 +62,7 @@ Load `mcp_toolkit` for the full tool cheat sheet (`skill_read_subskill("tester",
 | End with "tell me to playtest" | Run the tools and report PASS/FAIL yourself |
 
 This guide is already in your context — load reference files with `skill_read_subskill("tester", …)` only when their condition applies.
+
+## Verify
+
+`verse_test_run` then `tester_get_results` — report PASS/FAIL. Never ask the user to playtest.

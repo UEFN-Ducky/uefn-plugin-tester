@@ -43,7 +43,7 @@ verse_test_add_case(
 
 Or put real formulas in `RunAllTests()` via `workspace_write_file` on `Verse/DuckyTests/*.verse`.
 
-After edits: `workspace_list_verse_errors` → `verse_test_run` (compile + push) → place the device once if missing → play session → `tester_get_results` / `verse_test_results`.
+After edits: `workspace_list_verse_errors` → `verse_test_run` (compile + push) → place the device once if missing → `tester_get_results` / `verse_test_results`. Never ask the user to play a session.
 
 ## Results
 
