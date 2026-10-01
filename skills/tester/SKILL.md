@@ -5,7 +5,7 @@ description: "UEFN testing suite — device-graph simulation, Verse harness asse
 license: MIT
 metadata:
   label: UEFN Testing
-  version: 10
+  version: 11
   author: UEFN-Ducky
   copyright: Copyright 2026 Mindful Path Company, LLC
   allow_redistribute: true
@@ -66,3 +66,13 @@ This guide is already in your context — load reference files with `skill_read_
 ## Verify
 
 `verse_test_run` then `tester_get_results` — report PASS/FAIL. Never ask the user to playtest.
+
+## 42.30 notes
+
+- Logs from Epic when `epic_mcp_online`: `EditorToolset.LogsToolset.GetLogEntries(category,
+  pattern, maxEntries)` (editor: Verse compile results, blueprint errors, Content Pre-Checks)
+  and `ValkyrieToolset.SessionToolset.GetClientLogEntries(pattern, maxResults, startLine)`
+  (the launched client).
+- Restarting a session is faster; Launch Session logs why assets needed resaving.
+- Fixed: proximity voice chat, consumables vanishing on respawn, the Ready Up button
+  missing for a UEFN island, a false "party members cannot change game modes" error.
